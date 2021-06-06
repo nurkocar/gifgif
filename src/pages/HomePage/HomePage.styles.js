@@ -24,3 +24,10 @@ export const StyledLoadMoreButton = styled.button`
         background-image: linear-gradient(to right, red,yellow,green,blue,violet);
     }
 `;
+
+export const StyledLoadingMessage = styled.p`
+    color: white;
+    font-weight: 600;
+    margin-bottom: 4rem;
+`;
+

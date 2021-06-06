@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { GifCardList } from '../../components/gifCardList/GifCardList';
 import { SearchField } from '../../components/searchField/SearchField';
-import { StyledTitle, StyledLoadMoreButton } from './HomePage.styles';
+import { StyledTitle, StyledLoadMoreButton, StyledLoadingMessage } from './HomePage.styles';
 
 export const HomePage = () => {
 
@@ -13,11 +13,8 @@ export const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(null);
     const [offset, setOffset] = useState(0);
-
-
-    const loader = useRef(null);
 
 
     const fetchGifList = useCallback(async () => {
@@ -39,7 +36,7 @@ export const HomePage = () => {
 
     const handleSearchClick = useCallback(async () => {
 
-        const url = `${REACT_APP_BASE_URL}search?api_key=${REACT_APP_API_KEY}&q=${query}&limit=25&offset=${offset * 25}&rating=g&lang=en`
+        const url = `${REACT_APP_BASE_URL}search?api_key=${REACT_APP_API_KEY}&q=${query ? query : 'love'}&limit=25&offset=${offset * 25}&rating=g&lang=en`
 
         try {
             await setLoading(true);
@@ -52,10 +49,10 @@ export const HomePage = () => {
         }
     }, [query, offset]);
 
-    
+
     const handleLoadMoreClick = () => {
         setOffset(offset + 1);
-    }
+    };
 
     useEffect(() => {
         fetchGifList();
@@ -66,9 +63,11 @@ export const HomePage = () => {
             <SearchField query={query} setQuery={setQuery} handleSearchClick={handleSearchClick} />
             <StyledTitle>Trending GIFs</StyledTitle>
             <GifCardList gifList={gifList} setGifList={setGifList} />
+
+            {loading && <StyledLoadingMessage>Loading...</StyledLoadingMessage>}
+
             <StyledLoadMoreButton onClick = {handleLoadMoreClick}>Load more..</StyledLoadMoreButton>
 
-            {loading && <p>Loading...</p>}
             {error && <p>Error!</p>}
 
         </div>
