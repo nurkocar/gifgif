@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { Navbar } from '../../components/navBar/Navbar';
@@ -57,13 +57,13 @@ export const HomePage = () => {
 
 
     useEffect(() => {
-        console.log({ query })
+
         if (query === '') {
-            console.log('Burdayiz');
             fetchGifList();
         }else{
             handleSearchClick();
         }
+        
     }, [query, offset]);
 
 
