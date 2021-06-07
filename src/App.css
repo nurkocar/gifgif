@@ -3,5 +3,6 @@
   max-width: 1250px;
   display: flex;
   justify-content: center;
-  margin: 4vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
 }
