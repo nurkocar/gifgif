@@ -1,11 +1,9 @@
 import React from 'react';
 import Giphygif from '../../components/icons/Giphygif';
 import GiphyLogo from '../../components/icons/GiphyLogo';
-import { StyledNavbarContainer, StyledButtonContainer, StyledLogoContainer, StyledUploadCreateButtonsContainer, StyledUploadCreateButtons } from './Navbar.styles';
-import { NavbarButton } from '../navbarButton/NavbarButton';
+import { StyledNavbarContainer, StyledLogoContainer } from './Navbar.styles';
 
 export const Navbar = () => {
-    const buttonNames = ['Reactions', 'Entertainment', 'Sports', 'Stickers', 'Artists']
 
     return (
         <StyledNavbarContainer>

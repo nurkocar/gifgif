@@ -29,11 +29,18 @@ export const StyledLoadMoreButton = styled.button`
     :hover{
         background-image: linear-gradient(to right, red,yellow,green,blue,violet);
     }
+
+    @media only screen and (max-width: 450px) {
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin: 2rem 4rem;
+    }
 `;
 
 export const StyledLoadingMessage = styled.p`
     color: white;
     font-weight: 600;
     margin-bottom: 4rem;
+    
 `;
 
