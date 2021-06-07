@@ -5,14 +5,27 @@ export const StyledButtonContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
-    padding: 5px;
+    padding: 7px 15px 3px;
     background-color: transparent;
+    cursor: pointer;
     border: none;
     outline: none;
     color: white;
+    font-size: 0.9375rem;
     font-weight: 600;
-    border-bottom: 2px solid red;
+
+    :hover{
+        background-image: linear-gradient(to bottom right, #B75CFF,#8F00FF);
+    }
 `;
+
+export const StyledBottomBorder = styled.div`
+    border: none;
+    height: 3px;
+    background-image: linear-gradient(to bottom right, #B75CFF,#8F00FF);
+`;
+
+
 
 
 

@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const StyledHomePageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 export const StyledTitle = styled.p`
     color: white;
     text-align: left;
@@ -12,7 +17,7 @@ export const StyledLoadMoreButton = styled.button`
     font-weight: 600;
     letter-spacing: 1px;
     color: white;
-    margin: 2rem ;
+    margin: 2rem 8rem;
     padding: 0.6rem 1rem;
     border-radius: 6px;
     cursor: pointer;

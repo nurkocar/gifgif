@@ -8,7 +8,6 @@ const large = 1023;
 export const StyledGifListContainer = styled.div`
 
     column-count: 4;
-    column-gap: 10px;
 
     @media (max-width: ${ large }px) { 
         column-count: 3;

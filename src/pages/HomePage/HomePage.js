@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Navbar } from '../../components/navBar/Navbar';
 import { GifCardList } from '../../components/gifCardList/GifCardList';
 import { SearchField } from '../../components/searchField/SearchField';
-import { StyledTitle, StyledLoadMoreButton, StyledLoadingMessage } from './HomePage.styles';
+import { StyledHomePageContainer, StyledTitle, StyledLoadMoreButton, StyledLoadingMessage } from './HomePage.styles';
 
 
 export const HomePage = () => {
@@ -61,7 +61,8 @@ export const HomePage = () => {
     }, [offset]);
 
     return (
-        <div>
+        <StyledHomePageContainer>
+
             <Navbar/>
             <SearchField query={query} setQuery={setQuery} handleSearchClick={handleSearchClick} />
             <StyledTitle>Trending GIFs</StyledTitle>
@@ -73,7 +74,6 @@ export const HomePage = () => {
 
             {error && <p>Error!</p>}
 
-
-        </div>
+        </StyledHomePageContainer>
     );
 };

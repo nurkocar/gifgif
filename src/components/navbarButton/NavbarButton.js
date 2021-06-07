@@ -1,10 +1,11 @@
 import React from 'react';
-import {StyledButton, StyledButtonContainer} from './NavbarButton.styles';
+import {StyledButton, StyledButtonContainer, StyledBottomBorder} from './NavbarButton.styles';
 
 export const NavbarButton = ({name}) => {
     return (
         <StyledButtonContainer>
-            <StyledButton>{name}</StyledButton>           
+            <StyledButton>{name}</StyledButton>
+            <StyledBottomBorder></StyledBottomBorder>           
         </StyledButtonContainer>
     );
 };

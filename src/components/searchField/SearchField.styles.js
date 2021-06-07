@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+
 export const StyledSearchFieldContainer = styled.div`
     margin-top: 0.5rem;
-    width: 100%;
+    /* width: 100%; */
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 `;
 
 export const StyledInputContainer = styled.div`

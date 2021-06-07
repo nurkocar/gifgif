@@ -1,7 +1,7 @@
 import React from 'react';
 import Giphygif from '../../components/icons/Giphygif';
-import Giphy from '../../components/icons/Giphy';
-import { StyledNavbarContainer, StyledButtonContainer, StyledLogoContainer } from './Navbar.styles';
+import GiphyLogo from '../../components/icons/GiphyLogo';
+import { StyledNavbarContainer, StyledButtonContainer, StyledLogoContainer, StyledUploadCreateButtonsContainer, StyledUploadCreateButtons } from './Navbar.styles';
 import { NavbarButton } from '../navbarButton/NavbarButton';
 
 export const Navbar = () => {
@@ -11,11 +11,16 @@ export const Navbar = () => {
         <StyledNavbarContainer>
             <StyledLogoContainer>
                 <Giphygif />
-                <Giphy />
+                <GiphyLogo />
             </StyledLogoContainer>
             <StyledButtonContainer>
-                {buttonNames.map((name) => <NavbarButton name={name}/>)}
+                {buttonNames.map((name) => <NavbarButton name={name} />)}
             </StyledButtonContainer>
+            <StyledUploadCreateButtonsContainer>
+                <StyledUploadCreateButtons>Upload</StyledUploadCreateButtons>
+                <StyledUploadCreateButtons>Create</StyledUploadCreateButtons>
+            </StyledUploadCreateButtonsContainer>
+
         </StyledNavbarContainer>
     );
 };
