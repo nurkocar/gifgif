@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
+import { Navbar } from '../../components/navBar/Navbar';
 import { GifCardList } from '../../components/gifCardList/GifCardList';
 import { SearchField } from '../../components/searchField/SearchField';
 import { StyledTitle, StyledLoadMoreButton, StyledLoadingMessage } from './HomePage.styles';
+
 
 export const HomePage = () => {
 
@@ -60,6 +62,7 @@ export const HomePage = () => {
 
     return (
         <div>
+            <Navbar/>
             <SearchField query={query} setQuery={setQuery} handleSearchClick={handleSearchClick} />
             <StyledTitle>Trending GIFs</StyledTitle>
             <GifCardList gifList={gifList} setGifList={setGifList} />
@@ -69,6 +72,7 @@ export const HomePage = () => {
             <StyledLoadMoreButton onClick = {handleLoadMoreClick}>Load more..</StyledLoadMoreButton>
 
             {error && <p>Error!</p>}
+
 
         </div>
     );

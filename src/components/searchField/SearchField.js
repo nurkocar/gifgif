@@ -14,10 +14,11 @@ export const SearchField = ({handleSearchClick, query, setQuery}) => {
         <StyledSearchFieldContainer>
             <StyledInputContainer>
                 <StyledInputField 
-                    type='text' 
-                    value={query} 
-                    onChange = {(e) => setQuery(e.target.value) } 
-                    onKeyDown = { handleKeyDown }   
+                    type= 'text' 
+                    value= {query} 
+                    onChange= {(e) => setQuery(e.target.value) } 
+                    onKeyDown= { handleKeyDown }
+                    autofocus= 'autofocus'   
                 />
             </StyledInputContainer>
             <StyledButton onClick = {() => handleSearchClick(query)}>
