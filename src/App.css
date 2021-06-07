@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  border: 2px solid white;
+  max-width: 1250px;
   display: flex;
   justify-content: center;
+  margin: 4vw;
 }

@@ -15,11 +15,11 @@ export const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    const [query, setQuery] = useState(null);
+    const [query, setQuery] = useState('');
     const [offset, setOffset] = useState(0);
 
 
-    const fetchGifList = useCallback(async () => {
+    const fetchGifList = async () => {
 
         const url = `${REACT_APP_BASE_URL}trending?api_key=${REACT_APP_API_KEY}&limit=25&offset=${offset * 25}&rating=g`
 
@@ -27,18 +27,19 @@ export const HomePage = () => {
             await setLoading(true);
             await setError(false);
             const response = await axios.get(url);
-            await setGifList((prev) => [
-                ...new Set([...prev, ...response?.data?.data])
-            ]);
+            await setGifList(response?.data?.data)
+            // await setGifList((prev) => [
+            //     ...new Set([...prev, ...response?.data?.data])
+            // ]);
             setLoading(false);
         } catch (err) {
             setError(err);
         }
-    }, [offset]);
+    };
 
     const handleSearchClick = useCallback(async () => {
 
-        const url = `${REACT_APP_BASE_URL}search?api_key=${REACT_APP_API_KEY}&q=${query ? query : 'love'}&limit=25&offset=${offset * 25}&rating=g&lang=en`
+        const url = `${REACT_APP_BASE_URL}search?api_key=${REACT_APP_API_KEY}&q=${query}&limit=25&offset=${offset * 25}&rating=g&lang=en`
 
         try {
             await setLoading(true);
@@ -49,7 +50,7 @@ export const HomePage = () => {
         } catch (err) {
             setError(err);
         }
-    }, [query, offset]);
+    },[query, offset]);
 
 
     const handleLoadMoreClick = () => {
@@ -57,8 +58,12 @@ export const HomePage = () => {
     };
 
     useEffect(() => {
-        fetchGifList();
-    }, [offset]);
+        console.log({query})
+       if (query === '') 
+       
+       {console.log('Burdayiz') 
+       fetchGifList();}
+    }, [query, offset]);
 
     return (
         <StyledHomePageContainer>

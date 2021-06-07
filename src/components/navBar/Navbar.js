@@ -13,14 +13,6 @@ export const Navbar = () => {
                 <Giphygif />
                 <GiphyLogo />
             </StyledLogoContainer>
-            <StyledButtonContainer>
-                {buttonNames.map((name) => <NavbarButton name={name} />)}
-            </StyledButtonContainer>
-            <StyledUploadCreateButtonsContainer>
-                <StyledUploadCreateButtons>Upload</StyledUploadCreateButtons>
-                <StyledUploadCreateButtons>Create</StyledUploadCreateButtons>
-            </StyledUploadCreateButtonsContainer>
-
         </StyledNavbarContainer>
     );
 };

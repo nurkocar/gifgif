@@ -1,21 +1,31 @@
 import styled from "styled-components";
 
-const small = 400;
-const medium = 768;
-const large = 1023;
-
-
 export const StyledGifListContainer = styled.div`
 
-    column-count: 4;
+    
+    column-count: 5;
 
-    @media (max-width: ${ large }px) { 
-        column-count: 3;
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 450px) {
+        column-count: 1;
     }
-    @media (max-width: ${ medium }px) { 
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 450px) {
         column-count: 2;
     }
-    @media (max-width: ${ small }px) { 
-        column-count: 1;
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        column-count: 3;
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        column-count: 4;
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        column-count: 5;
     }
 `;
