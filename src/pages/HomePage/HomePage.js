@@ -39,10 +39,11 @@ export const HomePage = () => {
     const handleSearchClick = async () => {
 
         const url = `${REACT_APP_BASE_URL}search?api_key=${REACT_APP_API_KEY}&q=${query}&limit=25&offset=${offset * 25}&rating=g&lang=en`
-
+        
         try {
             await setLoading(true);
             await setError(false);
+            await setGifList([]);
             const response = await axios.get(url);
             // await setGifList(response?.data?.data);
             await setGifList((prev) => [
@@ -55,17 +56,16 @@ export const HomePage = () => {
     };
 
 
-    const handleLoadMoreClick = () => {
-        setOffset(offset + 1);
-    };
-
     useEffect(() => {
         console.log({ query })
         if (query === '') {
             console.log('Burdayiz');
             fetchGifList();
+        }else{
+            handleSearchClick();
         }
     }, [query, offset]);
+
 
     return (
         <StyledHomePageContainer>
@@ -77,7 +77,7 @@ export const HomePage = () => {
 
             {loading && <StyledLoadingMessage>Loading...</StyledLoadingMessage>}
 
-            <StyledLoadMoreButton onClick={handleLoadMoreClick}>Load more..</StyledLoadMoreButton>
+            <StyledLoadMoreButton onClick={() => (setOffset(offset + 1))}>Load more..</StyledLoadMoreButton>
 
             {error && <p>Error!</p>}
 

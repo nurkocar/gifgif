@@ -5,6 +5,7 @@ import SearchIcon from '../icons/SearchIcon';
 export const SearchField = ({handleSearchClick, query, setQuery}) => {
 
     const handleKeyDown = (event) => {
+        
         if (event.key === 'Enter') {
           handleSearchClick(query);
         }
@@ -15,10 +16,11 @@ export const SearchField = ({handleSearchClick, query, setQuery}) => {
             <StyledInputContainer>
                 <StyledInputField 
                     type= 'text' 
-                    value= {query} 
+                    value= {query}
+                    placeholder='Search for gifs...' 
                     onChange= { (e) => setQuery(e.target.value) } 
                     onKeyDown= { handleKeyDown }
-                    autoFocus= 'autofocus'   
+                    autoFocus  
                 />
             </StyledInputContainer>
             <StyledButton onClick = {() => handleSearchClick(query)}>
