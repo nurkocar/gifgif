@@ -11,9 +11,25 @@ export const StyledGifCardContainer = styled.div`
    
 `;
 
+export const StyledGifCardFigure = styled.figure`
+  border: 1px #cccccc solid;
+  padding: 4px;
+  margin: auto;
+`;
+
 export const StyledGifCardImage = styled.img`
     border-radius: 5px;
     width: 100%;
 `;
+
+export const StyledGifCardFigCaption = styled.figcaption`
+  background-color: black;
+  color: white;
+  font-style: italic;
+  padding: 2px;
+  text-align: center;
+`;
+
+
 
 

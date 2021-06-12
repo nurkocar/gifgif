@@ -1,12 +1,14 @@
-import React from 'react';
-import { StyledGifCardImage, StyledGifCardContainer } from './GifCard.styles';
+import { StyledGifCardContainer, StyledGifCardFigure, StyledGifCardImage, StyledGifCardFigCaption } from './GifCard.styles';
 
 export const GifCard = ({ gif }) => {
 
     return (
-            <StyledGifCardContainer key={ gif?.id + gif?.title }>
-                <StyledGifCardImage src={ gif?.images?.fixed_width?.url } alt={gif?.title}/>
-            </StyledGifCardContainer>
+        <StyledGifCardContainer key={gif?.id + gif?.title}>
+            <StyledGifCardFigure>
+                <StyledGifCardImage src={gif?.images?.fixed_width?.url} alt={gif?.title} />
+                <StyledGifCardFigCaption style={{ color: 'white' }}>{gif?.title}</StyledGifCardFigCaption>
+            </StyledGifCardFigure>
+        </StyledGifCardContainer>
     );
 };
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useLayoutEffect } from 'react';
 import axios from 'axios';
 
 import { Navbar } from '../../components/navBar/Navbar';
@@ -12,6 +12,7 @@ export const HomePage = () => {
     const { REACT_APP_API_KEY, REACT_APP_BASE_URL } = process.env;
 
     const [gifList, setGifList] = useState([]);
+    const [searchedGifList, setSearchedGifList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -26,6 +27,7 @@ export const HomePage = () => {
         try {
             await setLoading(true);
             await setError(false);
+            // await setSearchedGifList([]);
             const response = await axios.get(url);
             await setGifList((prev) => [
                 ...new Set([...prev, ...response?.data?.data])
@@ -39,14 +41,17 @@ export const HomePage = () => {
     const handleSearchClick = async () => {
 
         const url = `${REACT_APP_BASE_URL}search?api_key=${REACT_APP_API_KEY}&q=${query}&limit=25&offset=${offset * 25}&rating=g&lang=en`
-        
+
         try {
             await setLoading(true);
             await setError(false);
-            await setGifList([]);
+            // await setGifList([]);
             const response = await axios.get(url);
             // await setGifList(response?.data?.data);
-            await setGifList((prev) => [
+            // await setGifList((prev) => [
+            //     ...new Set([...prev, ...response?.data?.data])
+            // ]);
+            await setSearchedGifList((prev) => [
                 ...new Set([...prev, ...response?.data?.data])
             ]);
             setLoading(false);
@@ -56,15 +61,15 @@ export const HomePage = () => {
     };
 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         if (query === '') {
             fetchGifList();
-        }else{
+        } else {
             handleSearchClick();
-        }
-        
-    }, [query, offset]);
+        };
+
+    }, [offset]);
 
 
     return (
@@ -72,12 +77,14 @@ export const HomePage = () => {
 
             <Navbar />
             <SearchField query={query} setQuery={setQuery} handleSearchClick={handleSearchClick} />
-            <StyledTitle>Trending GIFs</StyledTitle>
-            <GifCardList gifList={gifList} setGifList={setGifList} />
+            <StyledTitle>{query === '' ? 'Trending GIFs' : `Gifs found for '${query}'`}</StyledTitle>
+            <Suspense fallback = 'Loading gifs...'>
+                <GifCardList gifList={query ? searchedGifList : gifList} />
+            </Suspense>
 
             {loading && <StyledLoadingMessage>Loading...</StyledLoadingMessage>}
 
-            <StyledLoadMoreButton onClick={() => (setOffset(offset + 1))}>Load more..</StyledLoadMoreButton>
+            <StyledLoadMoreButton onClick={() => setOffset(offset + 1)}>Load more..</StyledLoadMoreButton>
 
             {error && <p>Error!</p>}
 

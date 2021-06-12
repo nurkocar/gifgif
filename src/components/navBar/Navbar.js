@@ -1,4 +1,3 @@
-import React from 'react';
 import Giphygif from '../../components/icons/Giphygif';
 import GiphyLogo from '../../components/icons/GiphyLogo';
 import { StyledNavbarContainer, StyledLogoContainer } from './Navbar.styles';
